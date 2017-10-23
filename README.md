@@ -12,3 +12,5 @@ learn
     let hello2="hello world";
     hello3=hello2.toUpperCase();
     console.log(hello3);
+    
+    let hihi="hi";
