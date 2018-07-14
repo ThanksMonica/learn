@@ -10,13 +10,53 @@
 </head>
 
 <body>
-    <div id="root">{{msg}}</div>
+    <!-- 挂载点:vue的入口，指定id
+        模板：html标签（template视图）
+        实例：new Vue（一般一个框架下只需要1个vue实例） -->
+    <!-- ctrl+/注释 -->
+
+    <div id="root1">{{msg}}
+        <!-- <h1>hihi{{num}}</h1> //{{}}插值表达式 -->
+        <h1 v-text="num"></h1>
+        <h1 v-html="num"></h1>
+        <!-- 指令表达：v-html不会转译，v-text转译 -->
+
+        <div v-on:click="handleClick">{{content}}</div>
+        <!-- 事件绑定与方法定义 -->
+        <!-- v-on == @ -->
+    </div>
     <script>
-        new vue({
-            el: "#root",
-            data() { return { msg: "12313" }; }
+        new Vue({
+            el: "#root1",
+            // template: '<h1>hihi</h1>',
+            data() { return { 
+                msg: "hello world", 
+                num: "123123", 
+                content: "hello", 
+                count: 0 }; },//data必须为函数
+            methods: {
+                handleClick: function () {
+                    // this.content = "world"
+                    // if (this.content ==="hello"){
+                    //     this.content ="world"
+                    // }else if(this.content ==="world"){
+                    //     this.content = "hello"
+                    // }
+                    this.count++
+                    if (this.count % 2 === 0) {
+                        this.content = "hello"
+                    }
+                    else { this.content = "world" }
+
+
+
+                }
+            }
+
         })
     </script>
+
+
 </body>
 
 </html>
