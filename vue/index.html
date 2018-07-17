@@ -25,31 +25,50 @@
         <!-- 事件绑定与方法定义 -->
         <!-- v-on 绑定事件，简写为@ -->
         <div :title="'title '+title">{{content}}</div>
-        <input v-model="content1"/>
+        <input v-model="content1" />
         <div>{{content1}}</div>
-        姓：<input v-model="firstName"/>
-        名：<input v-model="lastName"/>
+        姓：
+        <input v-model="firstName" /> 名：
+        <input v-model="lastName" />
         <div>{{fullName}}</div>
         <div>{{count1}}</div>
+        <div v-if="show">show test</div>
+        <!-- v-show 与 v-if : 
+            v-show:当元素不显示时，dom不会被清除，style为none，适合频繁显示与隐藏时使用
+            v-if： 当显示元素值为false时，会将元素dom清除
+         -->
+        <button @click="handleClickShow">button</button>
+        <ul>
+            <li v-for="item of list" :key="item">{{item}}</li> 
+            <!-- //key值不能重复 -->
+            <!-- 重复时加入index？ -->
+            <li v-for="(item,index) of list" :key="item">{{item}}</li> 
+        </ul>
+
 
     </div>
     <script>
         new Vue({
             el: "#root",
             // template: '<h1>hihi</h1>',
-            data() { return { 
-                msg: "hello world", 
-                num: "123123", 
-                content: "hello", 
-                content1: "hello hello",
-                count: 0,
-                title :"this hello world",
-                firstName: '',
-                lastName: '',
-                count1: 0
-                 }; },//data必须为函数
+            data() {
+                return {
+                    msg: "hello world",
+                    num: "123123",
+                    content: "hello",
+                    content1: "hello hello",
+                    count: 0,
+                    title: "this hello world",
+                    firstName: '',
+                    lastName: '',
+                    count1: 0,
+                    show: true,
+                    list: [11, 22, 33]
+
+                };
+            },//data必须为函数
             computed: {     //计算属性，依赖数据未改变时，会使用上一次的缓存值
-                fullName:function(){
+                fullName: function () {
                     return this.firstName + ' ' + this.lastName
                 }
             },
@@ -60,8 +79,8 @@
                 // lastName: function(){
                 //     this.count1 ++
                 // }
-                fullName: function(){
-                    this.count1 ++
+                fullName: function () {
+                    this.count1++
                 }
             },
             methods: {
@@ -77,6 +96,9 @@
                         this.content = "hello"
                     }
                     else { this.content = "world" }
+                },
+                handleClickShow: function () {
+                    this.show = !this.show
                 }
             }
 
