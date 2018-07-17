@@ -41,7 +41,7 @@
         <ul>
             <li v-for="item of list" :key="item">{{item}}</li> 
             <!-- //key值不能重复 -->
-            <!-- 重复时加入index？ -->
+            <!-- 重复时加入index但仍会存在问题？ -->
             <li v-for="(item,index) of list" :key="item">{{item}}</li> 
         </ul>
 
