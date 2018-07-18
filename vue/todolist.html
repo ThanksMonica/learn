@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="./vue.js"></script>
+    <title>todolist</title>
+</head>
+
+<body>
+    <div id="root">
+        <div>
+            <input v-model="inputValue" />
+            <button @click="handleSubmit">提交</button>
+        </div>
+        <ul>
+            <todo-item v-for="(item,index) of list" :key="index" :content="item"></todo-item>
+        </ul>
+    </div>
+
+    <script>
+        Vue.component('todo-item', {//定义为全局组件
+            props: ['content'],//接收conten
+            template: '<li>{{content}}</li>'
+        })
+        // var TodoItem= { //局部组件
+        //     template: '<li>item</li>'
+        // }
+        new Vue({
+            el: "#root",
+
+            // components: {
+            //     'todo-item':TodoItem},//局部组件声明
+            data() {
+                return {
+                    inputValue: '',
+                    list: []
+                };
+            },
+            methods: {
+                handleSubmit: function () {
+                    this.list.push(this.inputValue)
+                    this.inputValue = ' '
+                }
+            }
+
+        })
+    </script>
+
+</body>
+
+</html>

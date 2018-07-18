@@ -1,0 +1,7 @@
+# V-指令
+v-on(@)->事件绑定<br>
+v-bind(:)->绑定数据<br>
+v-model->双向绑定数据<br> 
+v-if->当显示元素属性为false时，会被清除<br>
+v-show->元素不显示时，style为none，不会被清除<br>
+v-for-><br>循环显示元素
