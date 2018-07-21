@@ -5,3 +5,4 @@ v-model->双向绑定数据<br>
 v-if->当显示元素属性为false时，会被清除<br>
 v-show->元素不显示时，style为none，不会被清除<br>
 v-for-><br>循环显示元素
+组件：也是实例，包含props，template，data等
